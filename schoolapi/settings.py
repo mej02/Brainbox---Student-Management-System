@@ -74,15 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-    # For MySQL, uncomment and configure this:
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'your_database_name', # e.g., 'student_db'
-    #     'USER': 'your_mysql_user',   # e.g., 'root'
-    #     'PASSWORD': 'your_mysql_password',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
-    # }
+    
 }
 
 
@@ -136,13 +128,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_CREDENTIALS = True
 # CORS_ALLOW_ALL_ORIGINS = True # WARNING: For development only! Be specific in production.
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173", # Default Vite port
+    "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://brainbox-student-frontend-app.vercel.app",
+    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",  # <-- Add this!
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://brainbox-student-frontend-app.vercel.app",
+    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",  # <-- Add this!
+    "https://brainbox-student-management-system.onrender.com",
 ]
 
 from corsheaders.defaults import default_headers
