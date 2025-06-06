@@ -126,7 +126,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_CREDENTIALS = True
-# CORS_ALLOW_ALL_ORIGINS = True # WARNING: For development only! Be specific in production.
+CORS_ALLOW_ALL_ORIGINS = True # WARNING: For development only! Be specific in production.
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
@@ -136,6 +136,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",
     "https://brainbox-student-management-system.onrender.com",
     "https://brainbox-student-management-system-mej02s-projects.vercel.app",  
+    "https://brainbox-student-management-system-mdp11at1n-mej02s-projects.vercel.app",
+
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -147,6 +149,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",
     "https://brainbox-student-management-system.onrender.com",
     "https://brainbox-student-management-system-mej02s-projects.vercel.app",
+    "https://brainbox-student-management-system-mdp11at1n-mej02s-projects.vercel.app",
 ]
 
 from corsheaders.defaults import default_headers

@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 
 @ensure_csrf_cookie
-@api_view(["GET"])
+@api_view(["GET", "OPTIONS"])
 @permission_classes([AllowAny])
 def get_csrf_token(request):
     return Response({"detail": "CSRF cookie set"})
