@@ -131,16 +131,23 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "https://brainbox-student-frontend-app.vercel.app",
-    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",  # <-- Add this!
+    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",
+    "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",  
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "https://brainbox-student-frontend-app.vercel.app",
-    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",  # <-- Add this!
+    "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",
+    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",
     "https://brainbox-student-management-system.onrender.com",
 ]
 
 from corsheaders.defaults import default_headers
 CORS_ALLOW_HEADERS = list(default_headers) + ["X-CSRFToken"]
+
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SECURE = True
