@@ -133,7 +133,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://brainbox-student-frontend-app.vercel.app",
     "https://brainbox-student-management-system.vercel.app",
     "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",  
+    "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",
+    "https://brainbox-student-management-system-mej02s-projects.vercel.app",  
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -144,6 +145,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",
     "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",
     "https://brainbox-student-management-system.onrender.com",
+    "https://brainbox-student-management-system-mej02s-projects.vercel.app",
 ]
 
 from corsheaders.defaults import default_headers
