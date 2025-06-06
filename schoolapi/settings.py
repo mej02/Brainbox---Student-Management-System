@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'core',
-     # 'debug_toolbar',     # Optional: For Django Debug Toolbar
 
 ]
 
