@@ -15,6 +15,11 @@ class StudentViewSet(viewsets.ModelViewSet):
     lookup_field = 'student_id'
     permission_classes = [IsAuthenticated]
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        return context
+
 class StudentEnrollmentsAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
