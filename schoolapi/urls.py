@@ -10,5 +10,5 @@ urlpatterns = [
     path('api/', include('core.urls')),
 ]
 
-# Always serve media files (for production and development)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

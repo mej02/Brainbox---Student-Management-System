@@ -7,13 +7,25 @@ from django.contrib.auth.models import User
 from .models import Student, Subject, Grade, Enrollment
 from .serializers import StudentSerializer, SubjectSerializer, GradeSerializer, UserSerializer, EnrollmentSerializer
 from rest_framework.permissions import IsAuthenticated
+from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
+from rest_framework.permissions import BasePermission
+
+@ensure_csrf_cookie
+def csrf(request):
+    token = request.META.get("CSRF_COOKIE", "")
+    return JsonResponse({"csrftoken": token})
+
+class IsTeacher(BasePermission):
+    def has_permission(self, request, view):
+        return request.user and request.user.is_authenticated and request.user.is_staff
 
 # --- Student ViewSet ---
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     lookup_field = 'student_id'
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsTeacher]
 
     def get_serializer_context(self):
         context = super().get_serializer_context()

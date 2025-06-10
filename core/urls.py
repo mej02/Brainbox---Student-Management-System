@@ -5,7 +5,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-
+from .views import csrf
 
 @ensure_csrf_cookie
 @api_view(["GET", "OPTIONS"])
@@ -27,8 +27,9 @@ urlpatterns = [
     path('', include(router.urls)),
     path('register/', RegisterView.as_view(), name='register'), 
     path('login/', LoginView.as_view(), name='login'),       
-    path('csrf/', get_csrf_token, name='csrf'),  
+     path('csrf/', csrf, name='csrf'),
     path('students/<str:student_id>/enrollments/', StudentEnrollmentsAPIView.as_view(), name='student-enrollments'),
     path('students/<str:student_id>/enroll/', EnrollSubjectAPIView.as_view(), name='student-enroll'),
     path('students/<str:student_id>/unenroll/', UnenrollSubjectAPIView.as_view(), name='student-unenroll'),
 ]
+
