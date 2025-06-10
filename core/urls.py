@@ -28,8 +28,8 @@ urlpatterns = [
     
     path('', include(router.urls)),
     path('register/', RegisterView.as_view(), name='register'), 
-    path('api/login/', LoginView.as_view(), name='login'),       
-    path('api/csrf/', csrf, name='csrf'),
+    path('login/', LoginView.as_view(), name='login'),       
+    path('csrf/', csrf, name='csrf'),
     path('api/students/<str:student_id>/enrollments/', StudentEnrollmentsAPIView.as_view(), name='student-enrollments'),
     path('api/students/<str:student_id>/enroll/', EnrollSubjectAPIView.as_view(), name='student-enroll'),
     path('api/students/<str:student_id>/unenroll/', UnenrollSubjectAPIView.as_view(), name='student-unenroll'),
