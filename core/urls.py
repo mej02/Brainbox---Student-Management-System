@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from .views import csrf
+from .views import CsrfTokenView
 
 print("=== core/urls.py loaded ===")
 
@@ -29,7 +30,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('register/', RegisterView.as_view(), name='register'), 
     path('login/', LoginView.as_view(), name='login'),       
-    path('csrf/', csrf, name='csrf'),
+    path('csrf/', CsrfTokenView.as_view(), name='csrf'),
     path('api/students/<str:student_id>/enrollments/', StudentEnrollmentsAPIView.as_view(), name='student-enrollments'),
     path('api/students/<str:student_id>/enroll/', EnrollSubjectAPIView.as_view(), name='student-enroll'),
     path('api/students/<str:student_id>/unenroll/', UnenrollSubjectAPIView.as_view(), name='student-unenroll'),

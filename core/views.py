@@ -11,10 +11,12 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.permissions import BasePermission
 
-@ensure_csrf_cookie
-def csrf(request):
-    token = request.META.get("CSRF_COOKIE", "")
-    return JsonResponse({"csrftoken": token})
+from rest_framework.views import APIView
+
+class CsrfTokenView(APIView):
+    permission_classes = []
+    def get(self, request):
+        return JsonResponse({'csrftoken': request.META.get("CSRF_COOKIE", "")})
 
 class IsTeacher(BasePermission):
     def has_permission(self, request, view):
@@ -149,8 +151,7 @@ class RegisterView(APIView):
 class LoginView(APIView):
     @ensure_csrf_cookie
     def post(self, request):
-        print("=== LoginView POST endpoint hit ===")
-        print("Request data:", request.data)
+        print("=== TOP OF LoginView POST ===")
         try:
             print("LoginView POST called")
             print("Request data:", request.data)
