@@ -34,8 +34,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -126,30 +126,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://brainbox-student-frontend-app.vercel.app",
     "https://brainbox-student-management-system.vercel.app",
-    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system.onrender.com",
-    "https://brainbox-student-management-system-mej02s-projects.vercel.app",  
-    "https://brainbox-student-management-system-mdp11at1n-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system-cyjk7qb6i-mej02s-projects.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://brainbox-student-frontend-app.vercel.app",
     "https://brainbox-student-management-system.vercel.app",
-    "https://brainbox-student-management-system-37ngw5y5r-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system-lgdt6a2qc-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system.onrender.com",
-    "https://brainbox-student-management-system-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system-mdp11at1n-mej02s-projects.vercel.app",
-    "https://brainbox-student-management-system-cyjk7qb6i-mej02s-projects.vercel.app",
 ]
 
 from corsheaders.defaults import default_headers
