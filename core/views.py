@@ -151,7 +151,7 @@ class RegisterView(APIView):
 class LoginView(APIView):
     @ensure_csrf_cookie
     def post(self, request):
-        raise Exception("TEST EXCEPTION AT TOP OF LOGINVIEW")
+        # raise Exception("TEST EXCEPTION AT TOP OF LOGINVIEW")
         print("=== LoginView POST called ===")
         print("Request data:", request.data)
         try:
