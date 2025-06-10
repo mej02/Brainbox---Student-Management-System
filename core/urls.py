@@ -7,6 +7,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from .views import csrf
 
+print("=== core/urls.py loaded ===")
+
 @ensure_csrf_cookie
 @api_view(["GET", "OPTIONS"])
 @permission_classes([AllowAny])
@@ -26,10 +28,10 @@ urlpatterns = [
     
     path('', include(router.urls)),
     path('register/', RegisterView.as_view(), name='register'), 
-    path('login/', LoginView.as_view(), name='login'),       
-     path('csrf/', csrf, name='csrf'),
-    path('students/<str:student_id>/enrollments/', StudentEnrollmentsAPIView.as_view(), name='student-enrollments'),
-    path('students/<str:student_id>/enroll/', EnrollSubjectAPIView.as_view(), name='student-enroll'),
-    path('students/<str:student_id>/unenroll/', UnenrollSubjectAPIView.as_view(), name='student-unenroll'),
+    path('api/login/', LoginView.as_view(), name='login'),       
+    path('api/csrf/', csrf, name='csrf'),
+    path('api/students/<str:student_id>/enrollments/', StudentEnrollmentsAPIView.as_view(), name='student-enrollments'),
+    path('api/students/<str:student_id>/enroll/', EnrollSubjectAPIView.as_view(), name='student-enroll'),
+    path('api/students/<str:student_id>/unenroll/', UnenrollSubjectAPIView.as_view(), name='student-unenroll'),
 ]
 

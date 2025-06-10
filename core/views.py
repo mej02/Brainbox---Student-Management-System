@@ -149,14 +149,26 @@ class RegisterView(APIView):
 class LoginView(APIView):
     @ensure_csrf_cookie
     def post(self, request):
-        username = request.data.get("username")
-        password = request.data.get("password")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return Response({"success": True})
-        return Response({"success": False, "error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)    
-        
+        print("=== LoginView POST endpoint hit ===")
+        try:
+            print("LoginView POST called")
+            print("Request data:", request.data)
+            username = request.data.get("username")
+            password = request.data.get("password")
+            print("Username:", username, "Password:", password)
+            user = authenticate(request, username=username, password=password)
+            print("User:", user)
+            if user is not None:
+                login(request, user)
+                print("Login successful")
+                return Response({"success": True})
+            print("Login failed")
+            return Response({"success": False, "error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+        except Exception as e:
+            import traceback
+            print("Exception in LoginView:", e)
+            traceback.print_exc()
+            return Response({"success": False, "error": str(e)}, status=500)
 
 class EnrollmentViewSet(viewsets.ModelViewSet):
     queryset = Enrollment.objects.all()
