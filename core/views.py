@@ -27,7 +27,7 @@ class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     lookup_field = 'student_id'
-    permission_classes = [IsTeacher]
+    permission_classes = []
 
     def get_serializer_context(self):
         context = super().get_serializer_context()

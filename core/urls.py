@@ -5,16 +5,9 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from .views import csrf
 from .views import CsrfTokenView
 
 print("=== core/urls.py loaded ===")
-
-@ensure_csrf_cookie
-@api_view(["GET", "OPTIONS"])
-@permission_classes([AllowAny])
-def get_csrf_token(request):
-    return Response({"detail": "CSRF cookie set"})
 
 
 
