@@ -150,6 +150,7 @@ class LoginView(APIView):
     @ensure_csrf_cookie
     def post(self, request):
         print("=== LoginView POST endpoint hit ===")
+        print("Request data:", request.data)
         try:
             print("LoginView POST called")
             print("Request data:", request.data)
