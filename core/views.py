@@ -1,7 +1,6 @@
 from rest_framework import viewsets, status, serializers
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import Student, Subject, Grade, Enrollment
@@ -147,31 +146,15 @@ class RegisterView(APIView):
 # --- User Login View ---
 # Handles user authentication and returns role and student_id (if student).
 class LoginView(APIView):
+    @ensure_csrf_cookie
     def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        role = request.data.get('role')
-
+        username = request.data.get("username")
+        password = request.data.get("password")
         user = authenticate(request, username=username, password=password)
-
         if user is not None:
             login(request, user)
-
-            if role == 'teacher':
-                if user.is_staff:
-                        return Response({"message": "Login successful", "role": "teacher"}, status=status.HTTP_200_OK)
-                return Response({"message": "Invalid teacher credentials or role."}, status=status.HTTP_403_FORBIDDEN)
-            elif role == 'student':
-                try:
-                    # Try to find a Student profile linked to this user's username (student_id)
-                    student_profile = Student.objects.get(student_id=username) # Assuming student_id is used as username for students
-                    return Response({"message": "Login successful", "role": "student", "student_id": student_profile.student_id}, status=status.HTTP_200_OK)
-                except Student.DoesNotExist:
-                    return Response({"message": "No student profile found for this user."}, status=status.HTTP_404_NOT_FOUND)
-            else:
-                return Response({"message": "Invalid role specified."}, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            return Response({"message": "Invalid username or password."}, status=status.HTTP_401_UNAUTHORIZED)    
+            return Response({"success": True})
+        return Response({"success": False, "error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)    
         
 
 class EnrollmentViewSet(viewsets.ModelViewSet):
