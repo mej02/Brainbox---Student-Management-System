@@ -151,10 +151,9 @@ class RegisterView(APIView):
 class LoginView(APIView):
     @ensure_csrf_cookie
     def post(self, request):
-        print("=== TOP OF LoginView POST ===")
+        print("=== LoginView POST called ===")
+        print("Request data:", request.data)
         try:
-            print("LoginView POST called")
-            print("Request data:", request.data)
             username = request.data.get("username")
             password = request.data.get("password")
             print("Username:", username, "Password:", password)
