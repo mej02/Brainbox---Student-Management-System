@@ -2,7 +2,7 @@
 
 This is the Django REST API backend for the Brainbox Student Management System.
 
-## How to Run (for Professors/Reviewers)
+## How to Run:
 
 1. **Clone the repository:**
 
